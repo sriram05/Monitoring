@@ -1,0 +1,8 @@
+version: '2.3'
+
+services: 
+    send_alert:
+        build: alert
+        volumes: 
+            - ./docker_mount/logs:/usr/app/logs
+
