@@ -16,21 +16,21 @@ postgres = dict(
     #port="5432",
     port="5914",
 )
-
+"""
 mail = dict(
     sender="smularc.sb@gmail.com",#"harishantht@smu.edu.sg",
     recipients=["thirahari@gmail.com"],
     smtp_server="smtp.gmail.com",#"smtp.smu.edu.sg",
-    port=465,
+    port=587,#465,
 )
 """
 mail = dict(
-    sender="kasung@smu.edu.sg",
-    recipients=["kasung@smu.edu.sg"],
-    smtp_server="smtp.smu.edu.sg",
+    sender="harishantht@smu.edu.sg",
+    recipients=["harishantht@smu.edu.sg"],
+    smtp_server="smtp.smu.edu",
     port=25,
 )
-"""
+
 general = dict(
     sleep_time=5,
     log_file_name="logs/alerts.log",

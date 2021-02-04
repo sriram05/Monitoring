@@ -128,7 +128,8 @@ def send_alerts(alerts):
         if not is_mail_limit_exceeded():
             logger.info("sending alert with id [%d]", alert['id'])
             context = ssl.create_default_context()
-            with smtplib.SMTP_SSL(config.mail["smtp_server"], config.mail["port"], context=context) as server:
+            #with smtplib.SMTP_SSL(config.mail["smtp_server"], config.mail["port"], context=context) as server:
+            with smtplib.SMTP(config.mail["smtp_server"], config.mail["port"]) as server:  
                 server.ehlo()
                 body = "Message :%s\n\nCurrent Mail Count(daily) :%d/%d\nTime :%s " % \
                        (alert['message'],
@@ -142,7 +143,7 @@ def send_alerts(alerts):
                 message['Subject'] = "[%s][%s] %s" % (get_alert_type(alert['type']), alert['process'], alert["subject"])
                 message['From'] = config.mail["sender"]
                 message['To'] = ", ".join(recipients)
-                server.login(config.mail["sender"],"sMualerts@2021")
+                #server.login(config.mail["sender"],"sMualerts@2021")
                 server.sendmail(config.mail["sender"], config.mail['recipients'], message.as_string())
                 mail_count += 1
                 mark_sent(alert["id"])
